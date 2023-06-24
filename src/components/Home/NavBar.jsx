@@ -3,15 +3,20 @@ import React from "react";
 
 import { navData } from "../../constants/data";
 
-const Component1 = styled(Box)`
-  display: flex;
-  margin: 55px 130px 0px 130px;
-  justify-content: space-between;
-`;
+const Component1 = styled(Box)(({ theme }) => ({
+  display: "flex",
+  margin: "55px 130px 0px 130px",
+  justifyContent: "space-between",
+  overflow: "overlay",
+  // overflow:'hidden'   //to hide the scroll bar
+  [theme.breakpoints.down("lg")]: {
+    margin: "0",
+  },
+}));
 
 const Container = styled(Box)`
   padding: 12px 8px;
-  text-align:center; 
+  text-align: center;
 `;
 
 const Text = styled(Typography)`

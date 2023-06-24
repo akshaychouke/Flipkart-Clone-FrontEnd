@@ -1,28 +1,33 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { ShoppingCart } from "@mui/icons-material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { useState, useContext } from "react";
 // import components
 import LoginDialog from "../Login/LoginDialog";
 import { DataContext } from "../../context/ContextProvider";
 import Profile from "./Profile";
 //style the components
-const Wrapper = styled(Box)`
-  display: flex;
-  margin: 0 3% 0 auto;
-  ${"" /* align-items:center; */}
-  ${"" /* to syle the child components */}
-  & > button, & > p,& > div {
-    margin-right: 40px;
-    font-size: 16px;
-    align-items: center;
-  }
-`;
 
-const Container = styled(Box)`
-  display: flex;
-`;
+const Wrapper = styled(Box)(({ theme }) => ({
+  margin: "0 3% 0 auto",
+  display: "flex",
+  "& > *": {
+    marginRight: "40px",
+    fontSize: 16,
+    alignItems: "center",
+  },
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
+
+const Container = styled(Box)(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
 const LoginButton = styled(Button)`
   color: #2874f0;
@@ -37,7 +42,7 @@ const LoginButton = styled(Button)`
 
 const CustomButtons = () => {
   const [open, setOpen] = useState(false);
-  const { account,setAccount } = useContext(DataContext);
+  const { account, setAccount } = useContext(DataContext);
 
   const openDialog = () => {
     setOpen(true);
@@ -45,7 +50,7 @@ const CustomButtons = () => {
   return (
     <Wrapper>
       {account ? (
-        <Profile account={account} setAccount={setAccount}/>
+        <Profile account={account} setAccount={setAccount} />
       ) : (
         <LoginButton variant="contained" onClick={() => openDialog()}>
           Login
