@@ -56,20 +56,20 @@ const DetailView = () => {
               style={{ marginTop: 5, color: "#878787", fontSize: 14 }}
             >
               8 Ratings & 1 Reviews
-              <span>
+              <Box component='span'>
                 <img src={fassured} style={{ width: 77, marginLeft: 20 }} />
-              </span>
+              </Box>
             </Typography>
             <Typography>
-              <span style={{ fontSize: 28 }}>₹{product[0].price.cost}</span>
+              <Box component='span' style={{ fontSize: 28 }}>₹{product[0].price.cost}</Box>
               &nbsp;&nbsp;&nbsp;
-              <span style={{ color: "#878787" }}>
+              <Box component='span' style={{ color: "#878787" }}>
                 <strike>₹{product[0].price.mrp}</strike>
-              </span>
+              </Box>
               &nbsp;&nbsp;&nbsp;
-              <span style={{ color: "#388E3C" }}>
+              <Box component='span' style={{ color: "#388E3C" }}>
                 {product[0].price.discount} off
-              </span>
+              </Box>
             </Typography>
             <ProductDetail product={product} />
           </RightContainer>
